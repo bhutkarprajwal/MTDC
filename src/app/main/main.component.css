@@ -1,0 +1,183 @@
+/* Home Section */
+#home {
+    height: 100vh;
+
+    background-image: url('/assets/bg3.png'), url('/assets/bg3.png');
+    background-position: center, top left;
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+}
+
+.home .contenthome {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: relative; 
+    top: 100px; 
+    left: 40px; 
+    
+}
+
+.home h1 {
+    
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.home p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.home-btn {
+    padding: 1rem 2rem;
+    background-color: #ff7f50;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #ff6347;
+}
+
+
+#about {
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* Use min-height for responsive content */
+    padding: 20px;
+    gap: 20px;
+}
+
+#about .heading {
+    text-align: center;
+    font-size: calc(0.5rem + 1vw);
+    margin-bottom: 20px;
+}
+#about h1{
+    text-align: center;
+    
+}
+#about p {
+    text-align: center;
+    font-size: calc(0.5rem + 1vw);
+    margin-bottom: 20px;
+    max-width: 800px; /* Optional: Limit paragraph width for better readability */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    gap: 20px;
+    width: 50%;
+    max-width: 1200px; /* Optional: Limit the container width */
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+     /* Adjusted aspect ratio for larger cards */
+    background: #f4f4f4; /* Fallback background */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-overlay .card-text {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+
+
+/* Places Section */
+.places {
+    padding: 2rem 6%;
+}
+.places .heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.places .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+
+.place-box {
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.place-box:hover {
+    transform: scale(1.05);
+}
+
+.place-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.place-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.place-box p {
+    font-size: 1.4rem;
+    color: #555;
+}
