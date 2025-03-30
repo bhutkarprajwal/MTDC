@@ -51,16 +51,17 @@
     width: 100%;
     min-height: 100vh; /* Use min-height for responsive content */
     padding: 20px;
-    gap: 20px;
+    gap: 40px;
 }
 
 #about .heading {
     text-align: center;
     font-size: calc(0.5rem + 1vw);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 #about h1{
     text-align: center;
+    margin-bottom: 30px;
     
 }
 #about p {
@@ -180,4 +181,195 @@
 .place-box p {
     font-size: 1.4rem;
     color: #555;
+}.festival {
+    padding: 2rem 6%;
+    background-color: #f5f5f5;
 }
+
+.festival .heading {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+.festival h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.festival .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+
+.festival-box {
+    perspective: 1200px;
+}
+
+.flipbox-inner {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Larger size for better visuals */
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.flipbox:hover .flipbox-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Styles */
+.flipbox-front, .flipbox-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Front Side */
+.flipbox-front {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flipbox-front img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 1rem;
+}
+
+.flipbox-front h3 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Back Side with Background Image */
+.flipbox-back {
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flipbox-back .content {
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text readability */
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+}
+
+.flipbox-back h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.flipbox-back p {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+}
+
+
+
+/* 
+#festival{
+    min-width: 100%;
+    height: 100vh;
+    
+    
+}
+#festival h2{
+    display: flex;
+    justify-content: center;
+}
+ 
+.festival{
+    background: var(--second-bg-color);
+}
+
+.festival h2{
+    margin-bottom: 4rem;
+}
+
+.festival-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.festival-container .festival-box{
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+}
+
+.festival-box img{
+    width: 100%;
+    transition: .5s ease;
+}
+
+.festival-box:hover img{
+    transform: scale(1.1);
+}
+
+.festival-box .festival-layer{
+    position: absolute;         
+    bottom: 0;
+    left: 0;                      
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .4s ease;
+}
+
+.festival-box:hover .festival-layer{
+    transform: translateY(0%);
+}
+
+.festival-layer h4{
+    font-size: 3rem;
+}
+
+.festival-layer p{
+    font-size: 1.6rem;
+    margin: .3rem 0 1rem;
+}
+
+.festival-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: var(--text-color);
+    border-radius: 50%;
+}
+
+.festival-layer a i{
+    font-size: 3rem;
+    color: var(--second-bg-color);
+}
+
+.festival-layer-link{
+    display: flex;
+    gap: 2rem;
+} */

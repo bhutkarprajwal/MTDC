@@ -6,3 +6,10 @@
     margin: 0;
     padding: 0;
 }
+:root{ /*css variable with global scope declare in root */
+    --bg-color: #1f242d;
+    --second-bg-color: #323946;
+    --text-color: #fff;
+    --main-color: #0ef;
+    --high-color: rgb(66, 255, 233);
+}
