@@ -1,3 +1,66 @@
+/* Contact Section */
+.contact {
+    background: #f8f9fa; /* Light background for contrast */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contact .heading h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact .heading p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-info a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #007bff; /* Blue color for links */
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-info a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Icon Styling */
+.contact-info i {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact {
+        padding: 40px 15px;
+    }
+
+    .contact .heading h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info a {
+        font-size: 1rem;
+    }
+}
+
+
 /* Footer Section */
 .footer {
     text-align: center;
