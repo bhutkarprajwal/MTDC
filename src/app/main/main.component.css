@@ -47,27 +47,28 @@
 
 
 #about {
-    display: flex;
     
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh; /* Use min-height for responsive content */
-    padding: 20px;
-    gap: 40px;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 20px;
+   padding-top: 40px;
 }
-
 #about .heading {
-    text-align: center;
-    font-size: calc(0.5rem + 1vw);
+    max-width: 50%;
+    font-size: calc(0.5rem + 1vw); /* Adjusted for better scaling */
     margin-bottom: 40px;
-}
-#about h1{
-    text-align: center;
-    margin-bottom: 30px;
-    
+    padding-left: 20px;
 }
 
+/* Ensure the heading is properly aligned */
+.heading h1 {
+    display: flex;
+    justify-content: center; /* Center text inside heading */
+    align-items: center;
+    text-align: center;
+}
 
 
 .card-container {
