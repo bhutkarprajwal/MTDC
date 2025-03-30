@@ -1,8 +1,8 @@
 /* Home Section */
 #home {
     height: 100vh;
-
-    background-image: url('/assets/bg3.png'), url('/assets/bg3.png');
+    padding: top 40px; ;
+    background-image: url('/assets/bg3.jpg');
     background-position: center, top left;
     background-size: cover, cover;
     background-repeat: no-repeat, no-repeat;
@@ -22,24 +22,27 @@
     
     font-size: 3rem;
     margin-bottom: 1rem;
+    
 }
 
 .home p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    
 }
 
 .home-btn {
     padding: 1rem 2rem;
-    background-color: #ff7f50;
+    background-color: #0b0a0a;
     color: white;
     font-size: 1.2rem;
-    border-radius: 30px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
 .home-btn:hover {
-    background-color: #ff6347;
+    background-color: #fff;
+    color: #0b0a0a;
 }
 
 
@@ -64,12 +67,8 @@
     margin-bottom: 30px;
     
 }
-#about p {
-    text-align: center;
-    font-size: calc(0.5rem + 1vw);
-    margin-bottom: 20px;
-    max-width: 800px; /* Optional: Limit paragraph width for better readability */
-}
+
+
 
 .card-container {
     display: grid;
