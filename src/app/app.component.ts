@@ -1,14 +1,31 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbarComponent,MainComponent,FooterComponent],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,       // required for <router-outlet>
+    NavbarComponent,
+    FooterComponent      // <-- comma added above
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MTDC';
+  showFooter = true;
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        const hideFooterPages = ['/login', '/register','/profile'];
+        this.showFooter = !hideFooterPages.includes(event.url);
+      });
+  }
 }

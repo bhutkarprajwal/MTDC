@@ -1,70 +1,105 @@
 /* Reset Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(255, 215, 0, 0.3); /* Transparent golden */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Logo Styling */
+.logo1 {
+  height: 50px;
+}
+
+/* Navbar Links */
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: color 0.3s, background 0.3s;
+  border-radius: 6px;
+}
+
+.navbar a:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Login/Register/Profile Buttons */
+.nav-actions {
+  display: inline-flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.nav-actions button {
+  background: transparent;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-actions button:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* Login Icon */
+.navbar img {
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+.navbar img:hover {
+  transform: scale(1.2);
+}
+
+/* Mobile Menu Button */
+#menu-btn {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Content Section (Push Down to Prevent Overlap) */
+.hero-section {
+  margin-top: 80px; /* Push content below fixed navbar */
+  text-align: center;
+  padding: 50px;
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    display: none; /* Hide navbar links on mobile */
   }
-  
-  /* Background Section */
- 
-  
-  /* Navbar Styling */
-  .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
-    background: rgba(255, 215, 0, 0.3); /* Transparent golden color */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  /* Logo Styling */
-  .logo1 {
-    height: 50px;
-  }
-  
-  /* Navbar Links */
-  .navbar a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: color 0.3s;
-  }
-  
-  .navbar a:hover {
-    color: white;
-  }
-  
-  /* Mobile Menu Button */
+
   #menu-btn {
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
+    display: block; /* Show menu button */
   }
-  
-  /* Content Section (Push Down to Prevent Overlap) */
-  .hero-section {
-    margin-top: 80px; /* Push content down */
-    text-align: center;
-    padding: 50px;
-    color: black;
+
+  .nav-actions {
+    display: none; /* Hide actions on mobile until menu expands */
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar {
-      display: none; /* Hide navbar links on mobile */
-    }
-  
-    #menu-btn {
-      display: block; /* Show menu button */
-    }
-  }
-  
+}

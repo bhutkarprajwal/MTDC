@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main',
-  imports: [],
+  standalone: true,                   // 👈 required
+  imports: [CommonModule],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  styleUrls: ['./main.component.css']
 })
-export class MainComponent {
-
-}
+export class MainComponent {}

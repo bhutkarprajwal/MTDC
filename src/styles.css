@@ -13,3 +13,24 @@
     --main-color: #0ef;
     --high-color: rgb(66, 255, 233);
 }
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* background-color: var(--bg-color); */
+  /* color: var(--text-color); */
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet {
+  flex: 1; /* take remaining vertical space */
+  display: block;
+  padding: 20px;
+}
+
