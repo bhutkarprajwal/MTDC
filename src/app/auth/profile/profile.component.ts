@@ -7,7 +7,9 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { environment } from '../../../environments/environment'; // import environment
+import { environment } from '../../../environments/environment';
+import Swal from 'sweetalert2';
+import 'animate.css';
 
 @Component({
   selector: 'app-profile',
@@ -33,20 +35,7 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-
-    this.http.get<any>(`${environment.apiUrl}/user-profile/`)
-      .pipe(
-        catchError(err => {
-          console.error(err);
-          alert('Failed to fetch user details');
-          this.router.navigate(['/login']);
-          return throwError(() => err);
-        })
-      )
-      .subscribe(res => {
-        this.user = res;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      });
+    this.user = JSON.parse(storedUser);
   }
 
   toggleEdit() {
@@ -54,25 +43,78 @@ export class ProfileComponent implements OnInit {
   }
 
   saveProfile() {
-    this.http.put<any>(`${environment.apiUrl}/update-profile/`, this.user)
+    const userId = this.user.id;
+
+    Swal.fire({
+      title: 'Saving your profile...',
+      html: '<i class="fa fa-spin fa-spinner"></i>',
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      customClass: { popup: 'animate__animated animate__fadeInDown' }
+    });
+
+    this.http.put<any>(`${environment.apiUrl}/update_profile/${userId}/`, this.user)
       .pipe(
         catchError(err => {
-          console.error(err);
-          alert('Failed to update profile');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: err.error?.error || 'Failed to update profile',
+            showClass: { popup: 'animate__animated animate__shakeX' },
+            confirmButtonColor: '#ff3d00'
+          });
           return throwError(() => err);
         })
       )
       .subscribe(res => {
-        localStorage.setItem('user', JSON.stringify(this.user));
-        alert('Profile updated successfully!');
-        this.editMode = false;
+        Swal.close();
+        if (res.user) {
+          this.user = res.user;
+          localStorage.setItem('user', JSON.stringify(this.user));
+          Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated!',
+            text: 'Your profile has been updated successfully.',
+            showClass: { popup: 'animate__animated animate__zoomIn' },
+            timer: 2000,
+            showConfirmButton: false
+          });
+          this.editMode = false;
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Hmm...',
+            text: 'Something unexpected happened.',
+            showClass: { popup: 'animate__animated animate__tada' }
+          });
+        }
       });
   }
 
   logout() {
-    localStorage.removeItem('user');
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    Swal.fire({
+      title: 'Are you sure you want to logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, logout',
+      cancelButtonText: 'Cancel',
+      customClass: { popup: 'animate__animated animate__fadeInDown' },
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then(result => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('user');
+        this.authService.logout();
+        Swal.fire({
+          icon: 'success',
+          title: 'Logged Out!',
+          text: 'You have been logged out successfully.',
+          showClass: { popup: 'animate__animated animate__bounceIn' },
+          timer: 2000,
+          showConfirmButton: false
+        }).then(() => this.router.navigate(['/login']));
+      }
+    });
   }
 
   goBack() {

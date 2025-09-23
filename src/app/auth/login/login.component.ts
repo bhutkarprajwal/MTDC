@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { environment } from '../../../environments/environment'; // import global URL
+import { environment } from '../../../environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,20 +33,58 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.http.post<any>(`${environment.apiUrl}/login/`, payload)  // use global URL
+    this.http.post<any>(`${environment.apiUrl}/login/`, payload)
       .pipe(
         catchError(err => {
-          alert(err.error?.error || 'Login failed');
+          Swal.fire({
+            title: 'Login Failed!',
+            html: `<img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" width="100" /> 
+                   <p>${err.error?.error || 'Invalid username or password'}</p>`,
+            showConfirmButton: true,
+            confirmButtonColor: '#d33',
+            showClass: {
+              popup: 'animate__animated animate__shakeX'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOut'
+            }
+          });
           return throwError(() => err);
         })
       )
       .subscribe(res => {
         if (res.user) {
-          localStorage.setItem('user', JSON.stringify(res.user));  // store real user details
-          this.authService.setLoginStatus(true);                   // update login state
-          this.router.navigate(['/profile']);                       // navigate to profile
+          localStorage.setItem('user', JSON.stringify(res.user));
+          this.authService.setLoginStatus(true);
+
+          Swal.fire({
+            title: 'Welcome Back!',
+            html: `<img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" width="120" />
+                   <p>Hello ${res.user.first_name || res.user.username}!</p>`,
+            showConfirmButton: false,
+            timer: 2000,
+            showClass: {
+              popup: 'animate__animated animate__zoomInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__zoomOutUp'
+            }
+          }).then(() => {
+            this.router.navigate(['/profile']); 
+          });
+
         } else {
-          alert('Invalid login response');
+          Swal.fire({
+            title: 'Unexpected Response',
+            html: `<img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" width="100" />
+                   <p>Please try again later.</p>`,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
         }
       });
   }
