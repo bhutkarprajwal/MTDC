@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 80px); /* adjust for navbar/footer */
-  background: linear-gradient(135deg, #1abc9c, #16a085);
+  background: linear-gradient(135deg, #e67e22, #d35400);
   font-family: "Oswald", sans-serif;
 }
 
