@@ -1,0 +1,14 @@
+<section class="places" id="places">
+  <div class="heading">
+    <h1>Top Tourist Places in Maharashtra</h1>
+    <p>Explore some of the most popular and scenic destinations in Maharashtra.</p>
+  </div>
+
+  <div class="row">
+    <div class="place-box" *ngFor="let place of places">
+      <img [src]="place.image_url_1" [alt]="place.name">
+      <h3>{{ place.name }}</h3>
+      <p>{{ place.description }}</p>
+    </div>
+  </div>
+</section>
