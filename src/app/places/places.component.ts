@@ -21,17 +21,28 @@ export class PlacesComponent implements OnInit {
   }
 
   loadPlaces(): void {
-  const userId = localStorage.getItem('user_id');
-  this.http.post<any>(`${environment.apiUrl}/show_place/`, { user_id: userId }).subscribe({
-    next: (response) => {
-      this.places = response.places;
-      console.log('Places loaded:', this.places);
-    },
-    error: (err) => {
-      console.error('Error fetching places:', err);
-    }
-  });
-}
+    //  get user object from localStorage
+    const userData = localStorage.getItem('user');
+    const user = userData ? JSON.parse(userData) : null;
+    const userId = user ? user.id : null;
 
-  
+    console.log('User ID:', userId);  // should show a valid number
+
+    if (!userId) {
+      console.error('User ID not found. Please log in again.');
+      return;
+    }
+
+    //  send user_id in request
+    this.http.post<any>(`${environment.apiUrl}/show_place/`, { user_id: userId }).subscribe({
+      next: (response) => {
+        console.log('Full API Response:', response);
+        this.places = response.places || [];
+        console.log('Places loaded:', this.places);
+      },
+      error: (err) => {
+        console.error('Error fetching places:', err);
+      }
+    });
+  }
 }
